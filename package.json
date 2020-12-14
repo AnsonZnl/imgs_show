@@ -1,0 +1,16 @@
+{
+  "name": "pen_list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "http-server",
+    "cj": "node index.js"
+  },
+  "dependencies": {
+    "http-server": "^0.12.3",
+    "imageinfo": "^1.0.4"
+  },
+  "author": "",
+  "license": "ISC"
+}

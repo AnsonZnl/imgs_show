@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钢笔展示</title>
+    <link rel="stylesheet" href="./js/viewer/viewer.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        .img-wrap {
+            width: 1200px;
+            margin: auto;
+        }
+
+        .img-wrap .img-item {
+            display: inline-block;
+            width: 220px;
+            height: 200px;
+            padding: 10px;
+            margin: auto;
+        }
+
+        .img-wrap img {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .lazy-image {
+            background-size: cover;
+            background-position: center;
+            background: url('./imgs/loading.gif') no-repeat center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id="images" class="img-wrap">
+            <div class="img-item" v-for="(item, ind) in imgList" :key="ind">
+                <img :data-src="item" class="lazy-image" :alt="'Picture '+ind">
+            </div>
+        </div>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script src="./js/json.js"></script>
+    <script src="./js/lazy-image.js"></script>
+    <script src="./js/viewer/viewer.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                imgList: arr
+            },
+            mounted() {
+                console.log(this.imgList)
+                new LazyImage('.lazy-image')
+                const viewer = new Viewer(document.getElementById('images'), {
+                    url: 'data-src'
+                });
+            }
+        })
+    </script>
+</body>
+
+</html>
