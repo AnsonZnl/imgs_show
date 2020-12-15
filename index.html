@@ -37,14 +37,36 @@
             background-position: center;
             background: url('./imgs/loading.gif') no-repeat center;
         }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        .titles {
+            padding: 20px 10px;
+        }
+
+        .titles H2 {
+            display: inline-block;
+            padding: 0 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
-    <div id="app">
-        <div id="images" class="img-wrap">
-            <div class="img-item" v-for="(item, ind) in imgList" :key="ind">
-                <img :data-src="item" class="lazy-image" :alt="'Picture '+ind">
+    <div id="app" v-cloak>
+        <div class="img-wrap">
+            <div class="titles">
+                <h2 v-for="(item, ind) in imgList" :key="ind">{{item.title}}</h2>
+            </div>
+            <div id="images">
+                <div v-for="(item, ind) in imgList" :key="ind">
+                    <div>{{item.title}}</div>
+                    <div class="img-item" v-for="(item2, ind2) in item.strArr" :key="ind2">
+                        <img :data-src="item2" class="lazy-image" :alt="'Picture '+ind2">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
