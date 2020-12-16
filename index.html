@@ -6,58 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>钢笔展示</title>
     <link rel="stylesheet" href="./js/viewer/viewer.css">
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            border: 0;
-        }
-
-        .img-wrap {
-            width: 1200px;
-            margin: auto;
-        }
-
-        .img-wrap .img-item {
-            display: inline-block;
-            width: 220px;
-            height: 200px;
-            padding: 10px;
-            margin: auto;
-        }
-
-        .img-wrap img {
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-
-        .lazy-image {
-            background-size: cover;
-            background-position: center;
-            background: url('./imgs/loading.gif') no-repeat center;
-        }
-
-        [v-cloak] {
-            display: none;
-        }
-
-        .titles {
-            padding: 20px 5px;
-        }
-
-        .titles H2 {
-            display: inline-block;
-            padding: 0 10px;
-            cursor: pointer;
-        }
-
-        .item-title {
-            font-size: 20px;
-            font-weight: bold;
-            padding-left: 16px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
@@ -70,7 +19,9 @@
                 <div v-for="(item, ind) in imgList" :key="ind">
                     <div class="item-title" :id="'t'+ind">{{item.title}}</div>
                     <div class="img-item" v-for="(item2, ind2) in item.strArr" :key="ind2">
-                        <img :data-src="item2" class="lazy-image" :alt="'Picture '+ind2">
+                        <img :data-src="item2.src" class="lazy-image" :alt="item2.name">
+                        <div class="price">{{item2.price}}</div>
+                        <div class="name">{{item2.name}}</div>
                     </div>
                 </div>
             </div>

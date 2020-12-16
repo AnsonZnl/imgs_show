@@ -1,0 +1,62 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+.img-wrap {
+  width: 1200px;
+  margin: auto;
+}
+.img-wrap .titles {
+  padding: 20px 5px;
+}
+.img-wrap .titles H2 {
+  display: inline-block;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.img-wrap #images .item-title {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px 16px;
+}
+.img-wrap #images .img-item {
+  display: inline-block;
+  width: 200px;
+  padding: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: all 0.5s;
+  border-radius: 4px;
+}
+.img-wrap #images .img-item:hover {
+  /*-1或者-2最佳*/
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.img-wrap #images .img-item img {
+  width: 100%;
+  height: 180px;
+  border-radius: 4px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.img-wrap #images .img-item .lazy-image {
+  background-size: cover;
+  background-position: center;
+  background: url('imgs/loading.gif') no-repeat center;
+}
+.img-wrap #images .img-item .name {
+  color: #666;
+  font-size: 16px;
+  height: 60px;
+}
+.img-wrap #images .img-item .price {
+  color: #f40f0f;
+  font-size: 22px;
+  padding: 4px 2px;
+}
+[v-cloak] {
+  display: none;
+}

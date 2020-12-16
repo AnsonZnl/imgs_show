@@ -1,13 +1,89 @@
 const arr = [{
-    "strArr": ["./imgs/钢笔分类A/1280-520587640-red-panda.jpg", "./imgs/钢笔分类A/1280-601902040-red-panda-napping.jpg", "./imgs/钢笔分类A/f0at2n_web.webp", "./imgs/钢笔分类A/OIP.jpg", "./imgs/钢笔分类A/penA1 - 副本 (2).jpg", "./imgs/钢笔分类A/penA1 - 副本 (3).jpg", "./imgs/钢笔分类A/penA1 - 副本.jpg", "./imgs/钢笔分类A/penA1.jpg", "./imgs/钢笔分类A/penB1 - 副本 (12).jpg", "./imgs/钢笔分类A/penB1 - 副本 (6).jpg"],
+    "strArr": [{
+        "price": "355元",
+        "name": "1_奔图（PAN5TUM）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类A/355元-1_奔图（PAN5TUM）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用P3301DN）",
+        "src": "./imgs/钢笔分类A/355元-1_奔图（PANTUM）TL-463X黑色粉盒（适用P3301DN）.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类A/355元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-4粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类A/355元-1_奔图（PANTUM）TL-4粉盒（适用于P3301DN）.webp"
+    }, {
+        "price": "395元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类A/395元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }],
     "title": "钢笔分类A"
 }, {
-    "strArr": ["./imgs/钢笔分类B/download.jpg", "./imgs/钢笔分类B/OIP.jpg", "./imgs/钢笔分类B/penB1 - 副本 (22) - 副本.jpg", "./imgs/钢笔分类B/penB1 - 副本 - 副本.jpg"],
+    "strArr": [{
+        "price": "3555元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类B/3555元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类B/355元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P330N）",
+        "src": "./imgs/钢笔分类B/355元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P330N）.jpg"
+    }, {
+        "price": "3755元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类B/3755元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }],
     "title": "钢笔分类B"
 }, {
-    "strArr": ["./imgs/钢笔分类C/download.jpg", "./imgs/钢笔分类C/OIP.jpg", "./imgs/钢笔分类C/penB1 - 副本 (22) - 副本.jpg", "./imgs/钢笔分类C/penB1 - 副本 - 副本.jpg"],
+    "strArr": [{
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（",
+        "src": "./imgs/钢笔分类C/355元-1_奔图（PANTUM）TL-463X黑色粉盒（.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P330",
+        "src": "./imgs/钢笔分类C/355元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P330.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类C/355元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANT）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类C/355元-1_奔图（PANT）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }, {
+        "price": "365元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类C/365元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }],
     "title": "钢笔分类C"
 }, {
-    "strArr": ["./imgs/钢笔分类D/1280-520587640-red-panda.jpg", "./imgs/钢笔分类D/1280-601902040-red-panda-napping.jpg", "./imgs/钢笔分类D/f0at2n_web.webp", "./imgs/钢笔分类D/OIP.jpg", "./imgs/钢笔分类D/penA1 - 副本 (2).jpg", "./imgs/钢笔分类D/penA1 - 副本 (3).jpg", "./imgs/钢笔分类D/penA1 - 副本.jpg", "./imgs/钢笔分类D/penA1.jpg", "./imgs/钢笔分类D/penB1 - 副本 (12).jpg", "./imgs/钢笔分类D/penB1 - 副本 (6).jpg"],
+    "strArr": [{
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（",
+        "src": "./imgs/钢笔分类D/355元-1_奔图（PANTUM）TL-463X黑色粉盒（.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P330",
+        "src": "./imgs/钢笔分类D/355元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P330.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类D/355元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }, {
+        "price": "355元",
+        "name": "1_奔图（PANT）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类D/355元-1_奔图（PANT）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }, {
+        "price": "365元",
+        "name": "1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）",
+        "src": "./imgs/钢笔分类D/365元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg"
+    }],
     "title": "钢笔分类D"
 }]

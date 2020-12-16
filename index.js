@@ -84,16 +84,27 @@ files.forEach(el => {
         strArr: [],
         title: ''
     }
-    let str = ''
+
     joinDataObj.title = el;
     imgs2.forEach((e, i, arr) => {
         let src = e.path + e.filename;
-        console.log(src)
         if (src.indexOf(joinDataObj.title) != -1) {
-            str += src + (i == arr.length - 1 ? '' : ',')
+            // 是这个类别的
+            // let str = '355元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg';
+            let priceInd = e.filename.indexOf('-');
+            let nameEndInd = e.filename.lastIndexOf('.')
+            let price = e.filename.slice(0, priceInd);
+            let name = e.filename.slice(priceInd + 1, nameEndInd)
+            console.log('价钱：', price, '名称：', name)
+            let imgInfo = {
+                price,
+                name,
+                src,
+            }
+            joinDataObj.strArr.push(imgInfo);
         }
     })
-    joinDataObj.strArr = str.split(',').filter(e => e !== '')
+    // joinDataObj.strArr = str.split(',').filter(e => e !== '')
     joinDataArr.push(joinDataObj)
 })
 // console.log(joinDataArr)
@@ -109,9 +120,11 @@ fs.writeFile('./js/json.js', writeStr, err => {
     }
 })
 
+
 /**
  * 最后组成数据格式：
- [{
+ [
+   {
     title: '类型1',
     arr: ['./imgs/xx.png', './imgs/xx.png']
     },
@@ -120,5 +133,26 @@ fs.writeFile('./js/json.js', writeStr, err => {
     arr: ['./imgs/xx.png', './imgs/xx.png']
     }
  ]
+
+ 改为
+
+ [{
+  title: '类型',
+  arr: [
+     {
+       price: '360元',
+       name: '我是名称'
+       src: 'xxx.jpg'
+     }
+  ]
+ },{
+     title: '类型',
+     arr: [{
+         price: '360元',
+         name: '我是名称'
+         src: 'xxx.jpg'
+     }]
+ }]
+
  * 
  */
