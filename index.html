@@ -43,13 +43,19 @@
         }
 
         .titles {
-            padding: 20px 10px;
+            padding: 20px 5px;
         }
 
         .titles H2 {
             display: inline-block;
             padding: 0 10px;
             cursor: pointer;
+        }
+
+        .item-title {
+            font-size: 20px;
+            font-weight: bold;
+            padding-left: 16px;
         }
     </style>
 </head>
@@ -58,11 +64,11 @@
     <div id="app" v-cloak>
         <div class="img-wrap">
             <div class="titles">
-                <h2 v-for="(item, ind) in imgList" :key="ind">{{item.title}}</h2>
+                <h2 v-for="(item, ind) in imgList" :key="ind" @click="toView('t'+ind)">{{item.title}}</h2>
             </div>
             <div id="images">
                 <div v-for="(item, ind) in imgList" :key="ind">
-                    <div>{{item.title}}</div>
+                    <div class="item-title" :id="'t'+ind">{{item.title}}</div>
                     <div class="img-item" v-for="(item2, ind2) in item.strArr" :key="ind2">
                         <img :data-src="item2" class="lazy-image" :alt="'Picture '+ind2">
                     </div>
@@ -86,6 +92,13 @@
                 const viewer = new Viewer(document.getElementById('images'), {
                     url: 'data-src'
                 });
+            },
+            methods: {
+                toView(el) {
+                    document.getElementById(el).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
             }
         })
     </script>
