@@ -7,21 +7,122 @@
     <title>钢笔展示</title>
     <link rel="stylesheet" href="./js/viewer/viewer.css">
     <link rel="stylesheet" href="./css/index.css">
+    <style>
+        /*CSS全局设置*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            background-color: #EEEEEE;
+            width: 100%;
+        }
+
+        .nav .main {
+            background-color: #EEEEEE;
+            height: 80px;
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        /*横向一级菜单样式设置*/
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            float: left;
+            line-height: 40px;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000000;
+            display: block;
+            /*将a行内元素转变成块级元素*/
+            width: 120px;
+            height: 40px;
+        }
+
+        a:hover {
+            background-color: #666666;
+            color: #FFFFFF;
+        }
+
+        /*二级下拉菜单样式设置*/
+        ul li ul li {
+            float: none;
+            background-color: #EEEEEE;
+        }
+
+        ul li ul {
+            position: absolute;
+            top: 40px;
+            left: 0px;
+            display: none;
+            /*默认状态下或鼠标离开时隐藏*/
+            /* width: 90px; */
+            z-index: 999;
+        }
+
+        /*为了兼容IE7写的CSS样式，但是必须写在a:hover前面*/
+        ul li ul li a:link,
+        ul li ul li a:visited {
+            background-color: #EEEEEE;
+        }
+
+        ul li ul li a:hover {
+            background-color: #009933;
+        }
+
+        /*鼠标滑过一级菜单的元素时显示下拉菜单*/
+        ul li:hover ul {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app" v-cloak>
-        <div class="img-wrap">
-            <div class="titles">
-                <h2 v-for="(item, ind) in imgList" :key="ind" @click="toView('t'+ind)">{{item.title}}</h2>
+        <div class="nav">
+            <div class="main">
+                <ul>
+                    <li v-for="item in imgList"><a @click="toView(item.id)">{{item.title}}</a>
+                        <ul>
+                            <li v-for="item2 in item.child"><a @click="toView(item2.id)">{{item2.title}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
+        </div>
+        <div class="img-wrap">
             <div id="images">
                 <div v-for="(item, ind) in imgList" :key="ind">
-                    <div class="item-title" :id="'t'+ind">{{item.title}}</div>
-                    <div class="img-item" v-for="(item2, ind2) in item.strArr" :key="ind2">
-                        <img :data-src="item2.src" class="lazy-image" :alt="item2.name">
-                        <div class="price">{{item2.price}}</div>
-                        <div class="name">{{item2.name}}</div>
+                    <div class="item-title" :id="item.id">{{item.title}}</div>
+                    <!-- 一级目录 -->
+                    <div v-if="item.imgs.length">
+                        <div class="img-item" v-for="(item2, ind2) in item.imgs" :key="ind2">
+                            <img :data-src="item2.src" class="lazy-image" :alt="item2.name">
+                            <div class="price">{{item2.price}}</div>
+                            <div class="name">{{item2.name}}</div>
+                        </div>
+                    </div>
+                    <div v-if="item.child.length">
+                        <div v-for="(item3, ind) in item.child" :key="ind">
+                            <div class="item-title2" :id="item3.id">{{item3.title}}</div>
+                            <!-- 二级目录 -->
+                            <div v-if="item3.imgs.length">
+                                <div class="img-item" v-for="(item4, ind2) in item3.imgs" :key="ind2">
+                                    <img :data-src="item4.src" class="lazy-image" :alt="item4.name">
+                                    <div class="price">{{item4.price}}</div>
+                                    <div class="name">{{item4.name}}</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,7 +136,7 @@
         const app = new Vue({
             el: '#app',
             data: {
-                imgList: arr
+                imgList: arr[0]
             },
             mounted() {
                 console.log(this.imgList)
@@ -43,6 +144,13 @@
                 const viewer = new Viewer(document.getElementById('images'), {
                     url: 'data-src'
                 });
+            },
+            computed: {
+                activeUsers: function () {
+                    return this.users.filter(function (user) {
+                        return user.isActive
+                    })
+                }
             },
             methods: {
                 toView(el) {

@@ -48,111 +48,106 @@ var getFiles = {
  * 文件遍历方法
  * @param filePath 需要遍历的文件路径 
  */
+
+let arr = [{
+        title: '类型名称',
+        imgs: [{
+                price: '360元',
+                name: '我是名称',
+                src: 'xxx.jpg'
+            },
+            {
+                price: '360元',
+                name: '我是名称',
+                src: 'xxx.jpg'
+            }
+        ]
+    },
+    {
+        title: '类型名称',
+        imgs: [{
+            price: '360元',
+            name: '我是名称',
+            src: 'xxx.jpg'
+        }],
+        child: {
+            title: '类型名称',
+            imgs: [{
+                price: '360元',
+                name: '我是名称',
+                src: 'xxx.jpg'
+            }],
+            child: {}
+        }
+    }
+]
+
+let dirArr = [];
+
 function fileDisplay(filePath) {
-    let dirArr = []
+    let isRoot = filePath !== './imgs/'
+    let pathName = filePath.split(path.sep)
+    let obj;
+    if (isRoot) {
+        obj = {
+            id: Math.random().toString(36).substr(2),
+            title: pathName[pathName.length - 1],
+            imgs: [],
+            child: []
+        }
+    } else {
+        obj = []
+    }
     let files = fs.readdirSync(filePath);
     files.forEach(function (filename) {
-        var filedir = path.join(filePath, filename);
+        let filedir = path.join(filePath, filename);
         let stats = fs.statSync(filedir);
-        var isFile = stats.isFile(); //是文件  
-        var isDir = stats.isDirectory(); //是文件夹  
-        if (isFile) {
-            // console.log('是文件：', filedir);
+        let isFile = stats.isFile();
+        let isDir = stats.isDirectory();
+        //是文件
+        if (isFile && isRoot) {
+            // push imgs
+            let priceInd = filename.indexOf('-');
+            let nameEndInd = filename.lastIndexOf('.')
+            let price = filename.slice(0, priceInd);
+            let name = filename.slice(priceInd + 1, nameEndInd)
+            let src = './' + filedir.replace(/\\/g, "/");
+            obj.imgs.push({
+                price,
+                name,
+                src
+            })
         }
+        //是文件夹
         if (isDir) {
-            dirArr.push(filename)
-            // console.log('是文件夹：', filename);
-            fileDisplay(filedir); //递归，如果是文件夹，就继续遍历该文件夹下面的文件  
+            // push child
+            console.log(filedir)
+            isRoot ? obj.child.push(fileDisplay(filedir)) : obj.push(fileDisplay(filedir))
+            //递归，如果是文件夹，就继续遍历该文件夹下面的文件
         }
     });
-    return dirArr;
+    return obj
 }
-let files = fileDisplay('./imgs/')
-console.log('files', files)
+// 返回一个 child obj
+dirArr.push(fileDisplay('./imgs/'));
+// console.log('files', dirArr)
 
 
 //获取文件夹下的所有图片
 // let imgs1 = getFiles.getImageFiles("./imgs/");
 //获取文件夹下的所有文件
-let imgs2 = getFiles.getFileList("./imgs/");
-// console.log(imgs1, imgs2)
-let joinDataArr = [];
+// let imgs2 = getFiles.getFileList("./imgs/");
+// console.log(imgs1)
+// let joinDataArr = [];
 
 
-files.forEach(el => {
-    let joinDataObj = {
-        strArr: [],
-        title: ''
-    }
 
-    joinDataObj.title = el;
-    imgs2.forEach((e, i, arr) => {
-        let src = e.path + e.filename;
-        if (src.indexOf(joinDataObj.title) != -1) {
-            // 是这个类别的
-            // let str = '355元-1_奔图（PANTUM）TL-463X黑色粉盒（适用于P3301DN）.jpg';
-            let priceInd = e.filename.indexOf('-');
-            let nameEndInd = e.filename.lastIndexOf('.')
-            let price = e.filename.slice(0, priceInd);
-            let name = e.filename.slice(priceInd + 1, nameEndInd)
-            console.log('价钱：', price, '名称：', name)
-            let imgInfo = {
-                price,
-                name,
-                src,
-            }
-            joinDataObj.strArr.push(imgInfo);
-        }
-    })
-    // joinDataObj.strArr = str.split(',').filter(e => e !== '')
-    joinDataArr.push(joinDataObj)
-})
-// console.log(joinDataArr)
-
-
-let writeStr = 'const arr = ' + JSON.stringify(joinDataArr)
+let writeStr = 'const arr = ' + JSON.stringify(dirArr)
 fs.writeFile('./js/json.js', writeStr, err => {
     if (err) {
         console.error(err)
         return
     } else {
-        console.log('写入成功', writeStr)
+        console.log('写入成功')
     }
 })
-
-
-/**
- * 最后组成数据格式：
- [
-   {
-    title: '类型1',
-    arr: ['./imgs/xx.png', './imgs/xx.png']
-    },
-    {
-    title: '类型1',
-    arr: ['./imgs/xx.png', './imgs/xx.png']
-    }
- ]
-
- 改为
-
- [{
-  title: '类型',
-  arr: [
-     {
-       price: '360元',
-       name: '我是名称'
-       src: 'xxx.jpg'
-     }
-  ]
- },{
-     title: '类型',
-     arr: [{
-         price: '360元',
-         name: '我是名称'
-         src: 'xxx.jpg'
-     }]
- }]
-
- * 
- */
