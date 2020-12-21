@@ -91,9 +91,10 @@
         <div class="nav">
             <div class="main">
                 <ul>
-                    <li v-for="item in imgList"><a @click="toView(item.id)">{{item.title}}</a>
+                    <!-- @click="toView(item.id)" -->
+                    <li v-for="item in imgList"><a :href="'#'+item.id">{{item.title}}</a>
                         <ul>
-                            <li v-for="item2 in item.child"><a @click="toView(item2.id)">{{item2.title}}</a></li>
+                            <li v-for="item2 in item.child"><a :href="'#'+item2.id">{{item2.title}}</a></li>
                         </ul>
                     </li>
                 </ul>
