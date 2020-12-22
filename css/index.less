@@ -4,35 +4,112 @@
     border: 0;
 }
 
-.flx {
-    position: fixed;
-    right: 0;
-    top: 200px;
-    width: 250px;
-    height: 160px;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-    text-align: left;
-    padding: 10px;
-    background: #EEE;
+.top {
+    display: flex;
+    padding: 20px 5px;
 
     img {
-        width: 50px;
-        height: 50px;
-        display: block;
-        margin: auto;
-        margin-bottom: 10px;
+        width: 250px;
+        height: 70px;
     }
 
-    div {
-        display: block;
+    .phone {
+        width: 950px;
+        display: flex;
+        justify-content: space-around;
+
+        div {
+            line-height: 70px;
+            text-align: center;
+        }
     }
 }
 
 .img-wrap {
     width: 1200px;
     margin: auto;
+
+    .head {
+        display: flex;
+        width: 1200px;
+        margin: auto;
+
+        .nav {
+            width: 200px;
+
+            /*横向一级菜单样式设置*/
+            ul {
+                position: relative;
+                list-style: none;
+
+                li {
+
+                    line-height: 50px;
+                    text-align: center;
+                    cursor: pointer;
+
+                    &:hover .show-box {
+                        display: block;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        background-color: rgba(0, 0, 0, 0.8);
+                        text-align: center;
+                        display: block;
+                        color: #fff;
+                        width: 200px;
+                        height: 50px;
+
+                        &:hover {
+                            background-color: #666666 !important;
+                            color: #FFFFFF;
+                        }
+                    }
+
+                    // 二级菜单ul
+                    .show-box {
+                        position: absolute;
+                        top: 0;
+                        height: 100%;
+                        left: 200px;
+                        display: none;
+                        z-index: 999;
+                        overflow: hidden;
+                        width: 1000px;
+                        background-color: rgba(0, 0, 0, 0.8);
+
+                        li {
+                            float: left;
+                            width: 100px;
+                            // background-color: #666;
+
+                            .tow-a {
+                                width: 100px;
+                                background: none !important;
+                            }
+
+                            &:hover {
+                                background-color: #666;
+                                color: #046323;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .banner {
+            width: 1000px;
+
+            // background-color: aquamarine;
+            img {
+                width: 100%;
+                height: 450px;
+            }
+        }
+    }
+
 
     #images {
         .item-title {

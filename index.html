@@ -4,113 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>钢笔展示</title>
+    <title>局机关办公用品目录</title>
     <link rel="stylesheet" href="./js/viewer/viewer.css">
     <link rel="stylesheet" href="./css/index.css">
-    <style>
-        /*CSS全局设置*/
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav {
-            background-color: #EEEEEE;
-            width: 100%;
-        }
-
-        .nav .main {
-            background-color: #EEEEEE;
-            height: 80px;
-            width: 1200px;
-            margin: 0 auto;
-        }
-
-        /*横向一级菜单样式设置*/
-        ul {
-            list-style: none;
-        }
-
-        ul li {
-            float: left;
-            line-height: 40px;
-            text-align: center;
-            position: relative;
-            cursor: pointer;
-        }
-
-        a {
-            text-decoration: none;
-            color: #000000;
-            display: block;
-            /*将a行内元素转变成块级元素*/
-            width: 120px;
-            height: 40px;
-        }
-
-        a:hover {
-            background-color: #666666;
-            color: #FFFFFF;
-        }
-
-        /*二级下拉菜单样式设置*/
-        ul li ul li {
-            float: none;
-            background-color: #EEEEEE;
-        }
-
-        ul li ul {
-            position: absolute;
-            top: 40px;
-            left: 0px;
-            display: none;
-            /*默认状态下或鼠标离开时隐藏*/
-            /* width: 90px; */
-            z-index: 999;
-        }
-
-        /*为了兼容IE7写的CSS样式，但是必须写在a:hover前面*/
-        ul li ul li a:link,
-        ul li ul li a:visited {
-            background-color: #EEEEEE;
-        }
-
-        ul li ul li a:hover {
-            background-color: #009933;
-        }
-
-        /*鼠标滑过一级菜单的元素时显示下拉菜单*/
-        ul li:hover ul {
-            display: block;
-        }
 
 
-    </style>
 </head>
 
 <body>
     <div id="app" v-cloak>
-        <div class="flx">
-            <img src="./imgs/logo.png" alt="">
-            <div> 北京路通天虹科技集团有限公司<br />
-                电话：82666666<br />
-                贾东升：13911584123（同微信）<br />
-                单跃：136911420944（同微信）<br />
-            </div>
-        </div>
-        <div class="nav">
-            <div class="main">
-                <ul>
-                    <!-- @click="toView(item.id)" -->
-                    <li v-for="item in imgList"><a :href="'#'+item.id">{{item.title}}</a>
-                        <ul>
-                            <li v-for="item2 in item.child"><a :href="'#'+item2.id">{{item2.title}}</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <div class="img-wrap">
+            <div class="top">
+                <img src="http://www.ltth.com.cn/img/UpImg/e6128c7094b5410f8715e55db2e4b15eltth-logo.png" alt="">
+                <div class=phone>
+                    <div>电话：82666666</div>
+                    <div>贾东升：13911584123（同微信）</div>
+                    <div>单跃：136911420944（同微信）</div>
+                </div>
+            </div>
+            <div class="head">
+                <div class="nav">
+                    <ul>
+                        <li v-for="item in imgList"><a :href="'#'+item.id">{{item.title}}</a>
+                            <ul class="show-box">
+                                <li v-for="item2 in item.child"><a class="tow-a"
+                                        :href="'#'+item2.id">{{item2.title}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="banner">
+                    <img src="http://www.ltth.com.cn/adimg/a2716cd130d04785af465de22e9a1078.jpg" alt="">
+                </div>
+            </div>
             <div id="images">
                 <div v-for="(item, ind) in imgList" :key="ind">
                     <div class="item-title" :id="item.id">{{item.title}}</div>
