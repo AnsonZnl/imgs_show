@@ -123,7 +123,7 @@
 .img-wrap #images .img-item .lazy-image {
   background-size: cover;
   background-position: center;
-  background: url('imgs/loading.gif') no-repeat center;
+  background: url('../imgs/loading.gif') no-repeat center;
 }
 .img-wrap #images .img-item .name {
   color: #666;
@@ -134,6 +134,17 @@
   color: #f40f0f;
   font-size: 22px;
   padding: 4px 2px;
+}
+.footer .gotop {
+  text-align: center;
+  position: fixed;
+  right: 50px;
+  bottom: 30px;
+  cursor: pointer;
+  border-top: #fff solid 30px;
+  border-right: #fff solid 30px;
+  border-bottom: #ddd solid 30px;
+  border-left: #fff solid 30px;
 }
 [v-cloak] {
   display: none;
