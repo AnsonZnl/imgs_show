@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "http-server",
-    "cj": "node index.js"
+    "make": "node index.js"
   },
   "dependencies": {
     "bluebird": "^3.7.2",
