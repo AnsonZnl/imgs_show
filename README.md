@@ -11,7 +11,7 @@
 
 ## 构建 json 数据
 
-```bash
+```js
 npm run make
 ```
 
